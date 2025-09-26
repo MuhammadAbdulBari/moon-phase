@@ -8,7 +8,7 @@ function App() {
   const [illumination, setIllumination] = useState(0);
   const [daysSinceNew, setDaysSinceNew] = useState(0);
 
-  const moonCycle = 29.5305882; 
+  const moonCycle = 29.5305882;
   const msPerDay = 1000 * 60 * 60 * 24;
 
   const calculateMoonPhase = (date) => {
@@ -17,8 +17,7 @@ function App() {
     const timeDiff = targetDate.getTime() - knownNewMoon.getTime();
     const daysDiff = timeDiff / msPerDay;
     const phaseDays = ((daysDiff % moonCycle) + moonCycle) % moonCycle;
-    const phase = phaseDays / moonCycle;
-    return phase;
+    return phaseDays / moonCycle;
   };
 
   const getPhaseName = (phase) => {
@@ -42,11 +41,11 @@ function App() {
 
   const getShadowStyle = (phase) => {
     if (phase <= 0.5) {
-      const percent = (1 - (phase * 2)) * 100; 
+      const percent = (1 - phase * 2) * 100;
       const p = Math.max(0, Math.min(100, percent));
       return { clipPath: `ellipse(${p}% 100% at 0% 50%)` };
     } else {
-      const percent = ((phase - 0.5) * 2) * 100; 
+      const percent = (phase - 0.5) * 2 * 100;
       const p = Math.max(0, Math.min(100, percent));
       return { clipPath: `ellipse(${p}% 100% at 100% 50%)` };
     }
@@ -59,7 +58,6 @@ function App() {
     setIllumination(getIllumination(phase));
     setDaysSinceNew(Math.round(phase * moonCycle));
   };
-
 
   useEffect(() => {
     updateMoonPhase(selectedDate);
@@ -82,11 +80,14 @@ function App() {
   const handleRandomClick = () => {
     const start = new Date(1900, 0, 1);
     const end = new Date(2100, 11, 31);
-    const randomDate = new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
+    const randomDate = new Date(
+      start.getTime() + Math.random() * (end.getTime() - start.getTime())
+    );
     setSelectedDate(randomDate);
   };
 
   const pad = (n) => (n < 10 ? "0" + n : n);
+
   const formatDateForInput = (date) => {
     const d = new Date(date);
     return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
@@ -126,6 +127,36 @@ function App() {
             <p id="daysSinceNew">Days since new moon: {daysSinceNew}</p>
           </div>
         </div>
+        
+        <footer style={{ marginTop: "2rem", fontSize: "0.9rem" }}>
+          <p>
+            Built by <strong>Abdul Bari</strong> |
+            <a
+              href="http://abdulbaridev.vercel.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ marginLeft: "6px" }}
+            >
+              Portfolio
+            </a>{" "}
+            |{" "}
+            <a
+              href="https://www.instagram.com/4bdulbarii"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Instagram
+            </a>{" "}
+            |{" "}
+            <a
+              href="https://www.linkedin.com/in/abdulbari-dev"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              LinkedIn
+            </a>
+          </p>
+        </footer>
       </div>
     </div>
   );
