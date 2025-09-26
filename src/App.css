@@ -127,3 +127,23 @@ button:hover {
   font-size: 1.05rem;
   color: #ddd;
 }
+.footer {
+  margin-top: 2rem;
+  font-size: 0.9rem;
+  color: #aaa;
+}
+
+.footer a {
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footer a:hover {
+  color: #ffd369;
+}
+
+.highlight {
+  color: #ffd369;
+  font-weight: 600;
+}

@@ -60,7 +60,6 @@ function App() {
     setDaysSinceNew(Math.round(phase * moonCycle));
   };
 
-
   useEffect(() => {
     updateMoonPhase(selectedDate);
   }, [selectedDate]);
@@ -82,7 +81,9 @@ function App() {
   const handleRandomClick = () => {
     const start = new Date(1900, 0, 1);
     const end = new Date(2100, 11, 31);
-    const randomDate = new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
+    const randomDate = new Date(
+      start.getTime() + Math.random() * (end.getTime() - start.getTime())
+    );
     setSelectedDate(randomDate);
   };
 
@@ -126,6 +127,23 @@ function App() {
             <p id="daysSinceNew">Days since new moon: {daysSinceNew}</p>
           </div>
         </div>
+
+        <footer className="footer">
+          <p>
+            Built by <span className="highlight">Abdul Bari</span> 🚀
+          </p>
+          <p>
+            <a href="http://abdulbardev.vercel.app/" target="_blank" rel="noreferrer">
+              Portfolio
+            </a>{" | "}
+            <a href="https://www.instagram.com/4bdulbarii" target="_blank" rel="noreferrer">
+              Instagram
+            </a>{" | "}
+            <a href="https://www.linkedin.com/in/abdulbari-dev" target="_blank" rel="noreferrer">
+              LinkedIn
+            </a>
+          </p>
+        </footer>
       </div>
     </div>
   );
