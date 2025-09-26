@@ -96,7 +96,7 @@ function App() {
   return (
     <div className="App">
       <div className="container">
-        <h1>Moon Phase Calendar</h1>
+        <h1>Moon Phase</h1>
 
         <div className="calendar-container">
           <input
